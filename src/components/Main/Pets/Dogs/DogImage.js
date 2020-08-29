@@ -3,7 +3,15 @@ import React from 'react'
 export default function DogImage({ imageURL = null }) {
 	return (
 		<div>
-			<img className='dog__image' src={imageURL}></img>
+			{imageURL ? (
+				<img
+					className='dog__image'
+					alt='doggie'
+					src={imageURL}
+				></img>
+			) : (
+				'No Image Available'
+			)}
 		</div>
 	)
 }

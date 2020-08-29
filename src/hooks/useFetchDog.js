@@ -1,22 +1,23 @@
-import config from '../../../../config'
+import config from '../config'
 import { useState, useEffect } from 'react'
-const useFetchCat = () => {
-	const [nextCat, setnextCat] = useState(null)
+const useFetchDog = (people) => {
+	const [nextDog, setNextDog] = useState(null)
 	const [error, setError] = useState(null)
 
 	useEffect(() => {
 		const handleFetch = async () => {
 			try {
 				const data = await fetch(
-					`${config.REACT_APP_API_BASE}/pets/cat`
+					`${config.REACT_APP_API_BASE}/pets/dog`,
+					{ method: 'GET' }
 				)
 				if (data.error) throw data.error
 
-				const cat = await data.json()
-				if (cat) {
-					setnextCat(cat)
+				const dog = await data.json()
+
+				if (dog) {
+					setNextDog(dog)
 				}
-				console.log(cat)
 			} catch (error) {
 				setError(error)
 				console.error(error)
@@ -27,8 +28,8 @@ const useFetchCat = () => {
 		return () => {
 			//
 		}
-	}, [])
+	}, [people, nextDog])
 
-	return { nextCat, error }
+	return { nextDog, error }
 }
-export default useFetchCat
+export default useFetchDog

@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import DogImage from './DogImage'
 import DogInfo from './DogInfo'
-import useFetchDog from './useFetchDog'
 import './Dog.css'
-export default function Dog() {
-	const { nextDog } = useFetchDog()
+import useFetchDog from '../../../../hooks/useFetchDog'
+import config from '../../../../config'
+export default function Dog({ people, user }) {
+	const { nextDog } = useFetchDog(people)
 
 	return (
 		<div className='dog__container'>
@@ -12,7 +13,9 @@ export default function Dog() {
 				<DogImage {...nextDog} />
 				<DogInfo {...nextDog} />
 				<div>
-					<button>Adopt</button>
+					<button disabled={people.length !== 1}>
+						Adopt
+					</button>
 				</div>
 			</div>
 		</div>
