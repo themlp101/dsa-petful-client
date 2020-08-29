@@ -16,4 +16,4 @@ The app is a demo for a queue stack data structure. When the compoments mount, a
   - `React`
   - `Express.js`
   - `Node.js`
-  - Backend stores data in memeory using a queue data structure
+  - Backend stores data in JavaScript memory using a queue data structure
