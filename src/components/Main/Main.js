@@ -25,8 +25,10 @@ export default function Main() {
 				user={user}
 				setNewPerson={setNewPerson}
 			/>
-			<Cat user={user} people={people} />
-			<Dog user={user} people={people} />
+			<div className='main__flex'>
+				<Cat user={user} people={people} />
+				<Dog user={user} people={people} />
+			</div>
 		</div>
 	)
 }
