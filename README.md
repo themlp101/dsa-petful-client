@@ -9,7 +9,7 @@ We have a First-Come-First-Serve policy, because we don't like to keep out pets 
 
 The app is a demo for a queue stack data structure. When the compoments mount, a timer is set for 5 seconds and a person in line is dequeued on the backend and another person is added to the queue (to simulate endless users). The user can get in line and when it is the users turn, she can adopt the next animal. If the animal list is depleted the component unmounts and displays a message. 
 
-![Petful](./public/images/petful.png)
+![Petful](./public/petful.png)
 
 ### Tech
 
