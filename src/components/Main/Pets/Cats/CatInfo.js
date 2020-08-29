@@ -10,13 +10,17 @@ export default function CatInfo({
 	return (
 		<div className='info__container'>
 			<div className='pet__stats'>
-				<ul className='stats__list'>
-					<li>Name: {name}</li>
-					<li>Age: {age}</li>
-					<li>Breed: {breed}</li>
-					<li>Gender: {gender}</li>
-					<li>Description: {description}</li>
-				</ul>
+				{name ? (
+					<ul className='stats__list'>
+						<li>Name: {name}</li>
+						<li>Age: {age}</li>
+						<li>Breed: {breed}</li>
+						<li>Gender: {gender}</li>
+						<li>Description: {description}</li>
+					</ul>
+				) : (
+					'No available animal to adopt'
+				)}
 			</div>
 		</div>
 	)

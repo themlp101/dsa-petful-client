@@ -16,7 +16,6 @@ export default function useGetPeople() {
 				)
 				if (data.error) throw data.error
 				const people = await data.json()
-
 				setPeople(people)
 			} catch (err) {
 				setError(err)

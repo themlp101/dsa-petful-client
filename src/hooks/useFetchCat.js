@@ -11,23 +11,24 @@ const useFetchCat = (people) => {
 					`${config.REACT_APP_API_BASE}/pets/cat`,
 					{ method: 'GET' }
 				)
-				if (data.error) throw data.error
 
 				const cat = await data.json()
+				if (cat.error) throw cat.error
 				if (cat) {
 					setnextCat(cat)
 				}
 			} catch (error) {
 				setError(error)
-				console.error(error)
 			}
 		}
+		if (!error) {
+			handleFetch()
+		}
 
-		handleFetch()
 		return () => {
 			//
 		}
-	}, [people, nextCat])
+	}, [people, nextCat, error])
 
 	return { nextCat, error }
 }

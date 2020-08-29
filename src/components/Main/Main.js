@@ -9,7 +9,6 @@ export default function Main() {
 	const {
 		error,
 		people,
-		setPeople,
 		addPerson,
 		newPerson,
 		setNewPerson,
@@ -23,6 +22,7 @@ export default function Main() {
 				people={people}
 				addPerson={addPerson}
 				newPerson={newPerson}
+				user={user}
 				setNewPerson={setNewPerson}
 			/>
 			<Cat user={user} people={people} />

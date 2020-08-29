@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import config from '../../../config'
+import './People.css'
 
 export default function People({ people }) {
 	const servePet = async (pet) => {
@@ -23,23 +24,23 @@ export default function People({ people }) {
 					method: 'DELETE',
 				}
 			)
+			if (data.error) throw data.error
 		} catch (error) {
 			console.error(error)
 		}
 	}
-	const hello = () => {
-		const id = Math.floor(Math.random() * (10 - 1) + 1)
-		if (id > 5) {
-			console.log(`DOG ${id}`)
-			servePet('dog')
-			serveAdopter()
-		} else {
-			console.log(`CAT ${id}`)
-			servePet('cat')
-			serveAdopter()
-		}
-	}
+
 	useEffect(() => {
+		const hello = () => {
+			const id = Math.floor(Math.random() * (10 - 1) + 1)
+			if (id > 5) {
+				servePet('dog')
+				serveAdopter()
+			} else {
+				servePet('cat')
+				serveAdopter()
+			}
+		}
 		let intervalID = setInterval((e) => hello(), 5000)
 		return () => {
 			clearInterval(intervalID)
@@ -47,12 +48,14 @@ export default function People({ people }) {
 	}, [])
 	return (
 		<div>
-			{people &&
-				people.map((p, i) => (
-					<span key={i} className='person'>
-						{p}
-					</span>
-				))}
+			<ul className='people__list'>
+				{people &&
+					people.map((p, i) => (
+						<li key={i} className='person'>
+							{p}
+						</li>
+					))}
+			</ul>
 		</div>
 	)
 }

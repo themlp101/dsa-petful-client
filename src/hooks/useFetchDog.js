@@ -11,24 +11,24 @@ const useFetchDog = (people) => {
 					`${config.REACT_APP_API_BASE}/pets/dog`,
 					{ method: 'GET' }
 				)
-				if (data.error) throw data.error
 
 				const dog = await data.json()
+				if (dog.error) throw dog.error
 
 				if (dog) {
 					setNextDog(dog)
 				}
 			} catch (error) {
 				setError(error)
-				console.error(error)
 			}
 		}
-
-		handleFetch()
+		if (!error) {
+			handleFetch()
+		}
 		return () => {
 			//
 		}
-	}, [people, nextDog])
+	}, [people, nextDog, error])
 
 	return { nextDog, error }
 }
